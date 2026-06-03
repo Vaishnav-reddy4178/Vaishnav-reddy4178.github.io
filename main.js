@@ -228,4 +228,22 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Clipboard Quick-Copy Logic with Tooltip Feedback
+    const copyEmailButtons = document.querySelectorAll('.copy-email-btn');
+    if (copyEmailButtons.length > 0) {
+        copyEmailButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const emailAddress = btn.getAttribute('data-email');
+                if (emailAddress) {
+                    navigator.clipboard.writeText(emailAddress)
+                        .then(() => {
+                            btn.classList.add('copied');
+                            setTimeout(() => btn.classList.remove('copied'), 2000);
+                        })
+                        .catch(err => console.error('Failed to copy text:', err));
+                }
+            });
+        });
+    }
 });

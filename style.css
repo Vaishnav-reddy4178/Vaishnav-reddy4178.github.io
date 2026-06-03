@@ -709,6 +709,31 @@ footer {
     border-color: rgba(0, 242, 254, 0.3);
 }
 
+/* Clipboard Tooltip styling */
+.copy-email-btn::after {
+    content: 'Copied!';
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    background: var(--accent-1);
+    color: #000;
+    padding: 0.3rem 0.6rem;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.25s ease;
+    box-shadow: 0 4px 10px rgba(0, 242, 254, 0.3);
+}
+
+.copy-email-btn.copied::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
 .modal-footer {
     display: flex;
     justify-content: center;
