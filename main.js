@@ -186,4 +186,46 @@ window.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Contact Modal Open/Close Logic with GSAP animations
+    const contactModal = document.querySelector('#contact-modal');
+    const modalContent = document.querySelector('.contact-modal-content');
+    const openModalButtons = document.querySelectorAll('.trigger-contact-modal');
+    const closeModalButtons = document.querySelectorAll('.modal-close-btn, .contact-modal-overlay');
+
+    if (contactModal && modalContent) {
+        const openModal = (e) => {
+            if (e) e.preventDefault();
+            contactModal.classList.add('active');
+            
+            // Pop in the content container using GSAP
+            gsap.to(modalContent, {
+                opacity: 1,
+                scale: 1,
+                duration: 0.4,
+                ease: "back.out(1.7)"
+            });
+        };
+
+        const closeModal = () => {
+            gsap.to(modalContent, {
+                opacity: 0,
+                scale: 0.85,
+                duration: 0.3,
+                ease: "power2.in",
+                onComplete: () => {
+                    contactModal.classList.remove('active');
+                }
+            });
+        };
+
+        openModalButtons.forEach(btn => btn.addEventListener('click', openModal));
+        closeModalButtons.forEach(btn => btn.addEventListener('click', closeModal));
+        
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && contactModal.classList.contains('active')) {
+                closeModal();
+            }
+        });
+    }
 });

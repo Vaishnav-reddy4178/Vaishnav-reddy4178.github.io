@@ -45,7 +45,7 @@
                     Transforming complex data into actionable insights and engineering intelligent solutions. Creator of Scam Sentinal and Predictive Health Analytics Dashboards.
                 </p>
                 <div class="hero-actions">
-                    <a href="mailto:vaishnavreddy66@gmail.com" class="btn btn-primary" onclick="window.location.href='mailto:vaishnavreddy66@gmail.com'; return false;"><i class="fas fa-envelope"></i> Contact Me</a>
+                    <button class="btn btn-primary trigger-contact-modal"><i class="fas fa-envelope"></i> Contact Me</button>
                     <a href="https://www.linkedin.com/in/vaishnav-s-reddy-910b622b7/" target="_blank" class="btn btn-icon"><i class="fab fa-linkedin-in"></i></a>
                     <a href="https://github.com/Vaishnav-reddy4178" target="_blank" class="btn btn-icon"><i class="fab fa-github"></i></a>
                 </div>
@@ -250,12 +250,49 @@
             <h2 class="footer-title">Let's Build Something Amazing.</h2>
             <p>I am actively looking for internships in <strong>Data Science & Machine Learning</strong>, specializing in <strong>Python, PyTorch, and TensorFlow</strong>, with a strong focus on <strong>Research-oriented work</strong> (like my Scam Sentinal project).</p>
             <div class="footer-contact">
-                <p><i class="fas fa-envelope"></i> <a href="mailto:vaishnavreddy66@gmail.com" style="color: inherit; text-decoration: none;">vaishnavreddy66@gmail.com</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="#" class="trigger-contact-modal" style="color: inherit; text-decoration: none;">vaishnavreddy66@gmail.com</a></p>
                 <p><i class="fas fa-phone"></i> +91 9481472900</p>
             </div>
             <p class="copyright">&copy; 2026 Vaishnav S Reddy. All rights reserved.</p>
         </div>
     </footer>
+
+    <!-- Glassmorphism Contact Modal -->
+    <div id="contact-modal" class="contact-modal">
+        <div class="contact-modal-overlay"></div>
+        <div class="contact-modal-content glass-card">
+            <button class="modal-close-btn">&times;</button>
+            <h2 class="modal-title">Get in <span class="gradient-text">Touch</span></h2>
+            <p class="modal-subtitle">Feel free to reach out for internship opportunities, research collaborations, or queries!</p>
+            <div class="contact-methods">
+                <div class="contact-card">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <div class="contact-card-info">
+                        <h4>Email</h4>
+                        <p class="email-text">vaishnavreddy66@gmail.com</p>
+                    </div>
+                    <button class="copy-email-btn" data-email="vaishnavreddy66@gmail.com" title="Copy email address"><i class="far fa-copy"></i></button>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <div class="contact-card-info">
+                        <h4>Phone</h4>
+                        <p>+91 9481472900</p>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <i class="fab fa-linkedin contact-icon"></i>
+                    <div class="contact-card-info">
+                        <h4>LinkedIn</h4>
+                        <a href="https://www.linkedin.com/in/vaishnav-s-reddy-910b622b7/" target="_blank">Vaishnav S Reddy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <a href="mailto:vaishnavreddy66@gmail.com" class="btn btn-primary"><i class="fas fa-paper-plane"></i> Send Direct Email</a>
+            </div>
+        </div>
+    </div>
 
     <!-- GSAP & ScrollTrigger CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
