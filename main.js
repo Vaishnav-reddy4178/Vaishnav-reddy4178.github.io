@@ -84,30 +84,37 @@ window.addEventListener('DOMContentLoaded', () => {
     }, '-=0.4');
 });
 
-// Intersection Observer for scroll animations (other sections)
-const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-};
+// GSAP ScrollTrigger Scroll Reveal Animations
+gsap.registerPlugin(ScrollTrigger);
 
-const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.style.opacity = 1;
-            entry.target.style.transform = 'translateY(0)';
-            observer.unobserve(entry.target);
-        }
+window.addEventListener('DOMContentLoaded', () => {
+    // Scroll reveals for section titles
+    gsap.utils.toArray('.section-title').forEach(title => {
+        gsap.from(title, {
+            scrollTrigger: {
+                trigger: title,
+                start: "top 85%",
+                toggleActions: "play none none none"
+            },
+            opacity: 0,
+            y: 35,
+            duration: 1,
+            ease: "power3.out"
+        });
     });
-}, observerOptions);
 
-document.addEventListener('DOMContentLoaded', () => {
-    const animatedElements = document.querySelectorAll('.glass-card, .section-title');
-    
-    animatedElements.forEach(el => {
-        el.style.opacity = 0;
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
-        observer.observe(el);
+    // Scroll reveals for cards and timeline elements
+    gsap.utils.toArray('.project-card, .skill-category, .timeline-item').forEach(card => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: "top 90%",
+                toggleActions: "play none none none"
+            },
+            opacity: 0,
+            y: 45,
+            duration: 1,
+            ease: "power3.out"
+        });
     });
 });
