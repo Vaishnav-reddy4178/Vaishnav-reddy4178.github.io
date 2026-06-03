@@ -117,4 +117,45 @@ window.addEventListener('DOMContentLoaded', () => {
             ease: "power3.out"
         });
     });
+
+    // Skills Filtering Logic with GSAP Animations
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const skillCategories = document.querySelectorAll('.skill-category');
+
+    if (filterButtons.length > 0 && skillCategories.length > 0) {
+        filterButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update active state class on buttons
+                filterButtons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filterValue = btn.getAttribute('data-filter');
+
+                // Animate elements out, change state, animate in
+                gsap.to(skillCategories, {
+                    opacity: 0,
+                    scale: 0.8,
+                    duration: 0.25,
+                    onComplete: () => {
+                        skillCategories.forEach(card => {
+                            const category = card.getAttribute('data-category');
+                            if (filterValue === 'all' || category === filterValue) {
+                                card.style.display = 'block';
+                                gsap.to(card, {
+                                    opacity: 1,
+                                    scale: 1,
+                                    duration: 0.35,
+                                    ease: "power2.out"
+                                });
+                            } else {
+                                card.style.display = 'none';
+                            }
+                        });
+                        // Refresh ScrollTrigger to update layouts
+                        ScrollTrigger.refresh();
+                    }
+                });
+            });
+        });
+    }
 });

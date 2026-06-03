@@ -143,37 +143,47 @@
 
         <section id="skills" class="skills">
             <h2 class="section-title">Technical <span class="gradient-text">Skills</span></h2>
+            
+            <div class="skills-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="languages">Languages</button>
+                <button class="filter-btn" data-filter="frameworks">Frameworks</button>
+                <button class="filter-btn" data-filter="libraries">Libraries</button>
+                <button class="filter-btn" data-filter="tools">Tools</button>
+                <button class="filter-btn" data-filter="ai-tools">AI Tools</button>
+            </div>
+
             <div class="skills-container">
                 
-                <div class="skill-category glass-card">
+                <div class="skill-category glass-card" data-category="languages">
                     <h3><i class="fas fa-code"></i> Languages</h3>
                     <div class="skill-tags">
                         <span>Python</span><span>C</span><span>JavaScript</span><span>HTML/CSS</span><span>R</span><span>Kotlin</span>
                     </div>
                 </div>
 
-                <div class="skill-category glass-card">
+                <div class="skill-category glass-card" data-category="frameworks">
                     <h3><i class="fas fa-layer-group"></i> Frameworks</h3>
                     <div class="skill-tags">
                         <span>Node.js</span><span>PyTorch</span><span>TensorFlow</span>
                     </div>
                 </div>
 
-                <div class="skill-category glass-card">
+                <div class="skill-category glass-card" data-category="libraries">
                     <h3><i class="fas fa-book"></i> Libraries</h3>
                     <div class="skill-tags">
                         <span>Pandas</span><span>NumPy</span><span>Matplotlib</span><span>Scikit-learn</span>
                     </div>
                 </div>
 
-                <div class="skill-category glass-card">
+                <div class="skill-category glass-card" data-category="tools">
                     <h3><i class="fas fa-tools"></i> Tools</h3>
                     <div class="skill-tags">
                         <span>Git</span><span>VS Code</span><span>GitHub/GitLab</span><span>Android Studio</span>
                     </div>
                 </div>
 
-                <div class="skill-category glass-card">
+                <div class="skill-category glass-card" data-category="ai-tools">
                     <h3><i class="fas fa-robot"></i> AI Tools</h3>
                     <div class="skill-tags">
                         <span>AntiGravity</span><span>Deepseek</span><span>Wispr Flow</span><span>GensparkAI</span><span>GitHub Copilot</span><span>Cursor</span><span>DALL-E 3</span><span>Claude</span><span>Gemini</span>
