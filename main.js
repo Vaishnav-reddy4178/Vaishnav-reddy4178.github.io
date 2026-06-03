@@ -158,4 +158,32 @@ window.addEventListener('DOMContentLoaded', () => {
             });
         });
     }
+
+    // Fetch GitHub Repo Stats dynamically
+    const repoStatsContainers = document.querySelectorAll('.repo-stats');
+    if (repoStatsContainers.length > 0) {
+        repoStatsContainers.forEach(container => {
+            const repoName = container.getAttribute('data-repo');
+            if (repoName) {
+                fetch(`https://api.github.com/repos/Vaishnav-reddy4178/${repoName}`)
+                    .then(response => {
+                        if (!response.ok) throw new Error('API request failed');
+                        return response.json();
+                    })
+                    .then(data => {
+                        const starsEl = container.querySelector('.stars-count');
+                        const forksEl = container.querySelector('.forks-count');
+                        if (starsEl) starsEl.textContent = data.stargazers_count;
+                        if (forksEl) forksEl.textContent = data.forks_count;
+                    })
+                    .catch(error => {
+                        console.warn(`Fallback: Stats lookup failed for ${repoName}`);
+                        const starsEl = container.querySelector('.stars-count');
+                        const forksEl = container.querySelector('.forks-count');
+                        if (starsEl) starsEl.textContent = '0';
+                        if (forksEl) forksEl.textContent = '0';
+                    });
+            }
+        });
+    }
 });
