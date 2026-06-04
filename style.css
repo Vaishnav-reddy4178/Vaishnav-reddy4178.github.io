@@ -852,3 +852,32 @@ footer {
     box-shadow: 0 6px 25px rgba(0, 242, 254, 0.6);
     transform: translateY(-3px);
 }
+
+/* Footer Glow Divider */
+footer::before {
+    content: '';
+    display: block;
+    width: 60%;
+    height: 1px;
+    margin: 0 auto 3rem;
+    background: linear-gradient(to right, transparent, var(--accent-1), transparent);
+    opacity: 0.5;
+}
+
+/* Skill Tag Glow on Hover */
+.skill-tags span:hover {
+    background: rgba(79, 172, 254, 0.25);
+    border-color: var(--accent-1);
+    box-shadow: 0 0 12px rgba(0, 242, 254, 0.3);
+    color: var(--accent-1);
+    transform: translateY(-3px);
+}
+
+/* Tech tag glow on hover */
+.tech-tag:hover {
+    border-color: var(--accent-1);
+    color: var(--accent-1);
+    box-shadow: 0 0 10px rgba(0, 242, 254, 0.2);
+    transform: translateY(-2px);
+    transition: all 0.3s ease;
+}
