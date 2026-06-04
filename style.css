@@ -754,6 +754,38 @@ footer {
 }
 
 /* Responsive Design */
+/* Typing Cursor Animation */
+.typing-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background: var(--accent-1);
+    margin-left: 4px;
+    vertical-align: text-bottom;
+    animation: blink-cursor 0.8s step-end infinite;
+}
+@keyframes blink-cursor {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+}
+
+/* Active Nav Link */
+.nav-links a.active-link {
+    color: var(--accent-1);
+    position: relative;
+}
+.nav-links a.active-link::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent-1);
+    border-radius: 2px;
+    box-shadow: 0 0 8px var(--accent-1);
+}
+
 /* Scroll Progress Bar */
 .progress-container {
     position: fixed;

@@ -297,3 +297,59 @@ projectCards.forEach(card => {
     content.style.transform = 'rotateX(0) rotateY(0)';
   });
 });
+
+/* Typing Animation for Hero Subtitle */
+(function() {
+  const subtitleEl = document.querySelector('.hero-subtitle');
+  if (!subtitleEl) return;
+  const texts = ['Data Science Enthusiast', 'Software Engineer', 'AI/ML Developer', 'Problem Solver'];
+  let textIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+
+  const cursor = document.createElement('span');
+  cursor.className = 'typing-cursor';
+  subtitleEl.textContent = '';
+  subtitleEl.appendChild(cursor);
+
+  function type() {
+    const current = texts[textIndex];
+    if (!isDeleting) {
+      subtitleEl.textContent = current.substring(0, charIndex + 1);
+      subtitleEl.appendChild(cursor);
+      charIndex++;
+      if (charIndex === current.length) {
+        isDeleting = true;
+        setTimeout(type, 1800);
+        return;
+      }
+    } else {
+      subtitleEl.textContent = current.substring(0, charIndex - 1);
+      subtitleEl.appendChild(cursor);
+      charIndex--;
+      if (charIndex === 0) {
+        isDeleting = false;
+        textIndex = (textIndex + 1) % texts.length;
+      }
+    }
+    setTimeout(type, isDeleting ? 60 : 100);
+  }
+  setTimeout(type, 1200);
+})();
+
+/* Active Nav Link Highlight on Scroll */
+(function() {
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 120;
+      if (window.scrollY >= sectionTop) current = section.getAttribute('id');
+    });
+    navLinks.forEach(link => {
+      link.classList.remove('active-link');
+      if (link.getAttribute('href') === '#' + current) link.classList.add('active-link');
+    });
+  });
+})();
