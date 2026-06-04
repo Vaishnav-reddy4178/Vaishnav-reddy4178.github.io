@@ -247,3 +247,53 @@ window.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+// Theme Toggle Logic
+const themeToggleBtn = document.getElementById('theme-toggle');
+const rootElement = document.documentElement;
+
+// Initialize theme based on localStorage
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme === 'light') {
+  rootElement.classList.add('light-theme');
+  if (themeToggleBtn) themeToggleBtn.querySelector('i').className = 'fas fa-moon';
+} else {
+  // Default dark theme
+  rootElement.classList.remove('light-theme');
+  if (themeToggleBtn) themeToggleBtn.querySelector('i').className = 'fas fa-sun';
+}
+
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener('click', () => {
+    const isLight = rootElement.classList.toggle('light-theme');
+    localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    // Update icon
+    themeToggleBtn.querySelector('i').className = isLight ? 'fas fa-moon' : 'fas fa-sun';
+  });
+}
+/* Scroll Progress Bar */
+window.addEventListener('scroll', () => {
+  const progressBar = document.querySelector('.progress-bar');
+  if (!progressBar) return;
+  const scrollTop = document.documentElement.scrollTop;
+  const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  const scrolled = (scrollTop / scrollHeight) * 100;
+  progressBar.style.width = `${scrolled}%`;
+});
+
+/* 3D Hover Tilt Effect for Project Cards */
+const projectCards = document.querySelectorAll('.project-card');
+projectCards.forEach(card => {
+  const content = card.querySelector('.project-content');
+  if (!content) return;
+  card.addEventListener('mousemove', e => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const rotateY = ((x / rect.width) - 0.5) * 20; // max 10deg each side
+    const rotateX = ((y / rect.height) - 0.5) * -20;
+    content.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+  card.addEventListener('mouseleave', () => {
+    content.style.transform = 'rotateX(0) rotateY(0)';
+  });
+});
