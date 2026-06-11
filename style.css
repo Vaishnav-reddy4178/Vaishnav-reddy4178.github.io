@@ -498,7 +498,8 @@ section {
     background: linear-gradient(to right, var(--accent-1), var(--accent-2));
     color: #000;
     border-color: transparent;
-    box-shadow: 0 0 15px rgba(0, 242, 254, 0.3);
+    box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4);
+    transform: translateY(-3px);
 }
 
 .skills-container {
