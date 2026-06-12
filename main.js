@@ -385,3 +385,22 @@ document.querySelectorAll('.btn-primary').forEach(btn => {
     btn.style.transform = 'translate(0px, 0px)';
   });
 });
+
+/* Cyber Hacker Text Scramble Effect */
+const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+const heroName = document.querySelector('.hero-title .gradient-text');
+if (heroName) {
+  heroName.dataset.value = heroName.innerText;
+  heroName.addEventListener("mouseover", event => {
+    let iterations = 0;
+    const interval = setInterval(() => {
+      event.target.innerText = event.target.innerText.split("")
+        .map((letter, index) => {
+          if (index < iterations) return event.target.dataset.value[index];
+          return letters[Math.floor(Math.random() * 26)];
+        }).join("");
+      if (iterations >= event.target.dataset.value.length) clearInterval(interval);
+      iterations += 1 / 3;
+    }, 30);
+  });
+}
