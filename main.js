@@ -286,21 +286,21 @@ window.addEventListener('scroll', () => {
   progressBar.style.width = `${scrolled}%`;
 });
 
-/* 3D Hover Tilt Effect for Project Cards */
-const projectCards = document.querySelectorAll('.project-card');
+/* 3D Hover Tilt Effect for Project Cards and Skill Cards */
+const projectCards = document.querySelectorAll('.project-card, .skill-category');
 projectCards.forEach(card => {
-  const content = card.querySelector('.project-content');
-  if (!content) return;
   card.addEventListener('mousemove', e => {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
     const rotateY = ((x / rect.width) - 0.5) * 20; // max 10deg each side
     const rotateX = ((y / rect.height) - 0.5) * -20;
-    content.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    card.style.zIndex = "10";
   });
   card.addEventListener('mouseleave', () => {
-    content.style.transform = 'rotateX(0) rotateY(0)';
+    card.style.transform = '';
+    card.style.zIndex = "1";
   });
 });
 
