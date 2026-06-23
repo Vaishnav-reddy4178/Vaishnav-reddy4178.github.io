@@ -220,10 +220,26 @@ nav {
     font-size: 0.9rem;
     font-weight: 600;
     transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent-1);
+    transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
     color: var(--accent-1);
+}
+
+.nav-links a:hover::after {
+    width: 100%;
 }
 
 /* Main Layout */
