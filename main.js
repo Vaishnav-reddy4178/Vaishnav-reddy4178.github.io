@@ -402,3 +402,15 @@ document.querySelectorAll('.stat-number').forEach(counter => {
   };
   requestAnimationFrame(animate);
 });
+
+/* Parallax Effect for Background Blobs */
+window.addEventListener('scroll', () => {
+  const scrollY = window.scrollY;
+  const blob1 = document.querySelector('.blob-1');
+  const blob2 = document.querySelector('.blob-2');
+  const blob3 = document.querySelector('.blob-3');
+  
+  if (blob1) blob1.style.transform = `translateY(${scrollY * 0.15}px)`;
+  if (blob2) blob2.style.transform = `translateY(${scrollY * 0.1}px)`;
+  if (blob3) blob3.style.transform = `translateY(${scrollY * 0.05}px)`;
+});
